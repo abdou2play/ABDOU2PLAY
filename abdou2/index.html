@@ -1,0 +1,1890 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="frame-src https://player.kick.com https://www.youtube.com">
+    <title>Abdou2Play</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="ايقونة موقع/d9320538771c8428fcc8ca90895e4310-removebg-preview.ico">
+    <style>
+        :root {
+            --red: #ff0000;
+            --dark-bg: #121212;
+            --light-bg: #f5f5f5;
+            --blue-bg: #1a237e;
+            --dark-text: #ffffff;
+            --light-text: #333333;
+            --blue-text: #e8eaf6;
+            --dark-card: #1e1e1e;
+            --light-card: #ffffff;
+            --blue-card: #283593;
+            --kick-green: #24bf5f;
+            --redz-purple: rgb(255, 0, 0);
+            
+            --bg-color: var(--dark-bg);
+            --text-color: var(--dark-text);
+            --card-bg: var(--dark-card);
+            --nav-bg: var(--dark-bg);
+        }
+        
+        body.light-mode {
+            --bg-color: var(--light-bg);
+            --text-color: var(--light-text);
+            --card-bg: var(--light-card);
+            --nav-bg: var(--light-bg);
+        }
+        
+        body.blue-mode {
+            --bg-color: var(--blue-bg);
+            --text-color: var(--blue-text);
+            --card-bg: var(--blue-card);
+            --nav-bg: var(--blue-bg);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: var(--nav-bg);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--red);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+        
+        .logo span {
+            color: var(--red);
+        }
+        
+        .desktop-nav {
+            display: flex;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .desktop-nav li {
+            margin: 0 15px;
+        }
+        
+        .desktop-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 0;
+            position: relative;
+            display: block;
+        }
+        
+        .desktop-nav a:hover {
+            color: var(--red);
+        }
+        
+        .desktop-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--red);
+            transition: width 0.3s;
+        }
+        
+        .desktop-nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            border-top: 1px solid var(--red);
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav li {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .mobile-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--red);
+            transform: translateX(-5px);
+        }
+        
+        .centered-heading {
+            text-align: center;
+            position: relative;
+            display: block;
+            margin: 0 auto 30px;
+            padding-bottom: 15px;
+            width: fit-content;
+            color: var(--text-color);
+        }
+        
+        .centered-heading::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            bottom: 0;
+            left: 15%;
+            background-color: var(--red);
+        }
+        
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 30px;
+            color: var(--dark-text);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            background: var(--red);
+            color: var(--dark-text);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255,0,0,0.3);
+            background: #e60000;
+        }
+        
+        .goals-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .goals-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .goal-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid var(--red);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(255,0,0,0.2);
+        }
+        
+        .goal-icon {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 20px;
+        }
+        
+        .goal-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--red);
+        }
+        
+        .goal-card p {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+        
+        .goal-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgba(255, 0, 0, 0.2);
+        }
+        
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .about-content {
+            display: block;
+            text-align: center;
+        }
+        
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .about-text p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        
+        .games-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+        
+        .game-card {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 58, 58, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
+            border-color: rgba(255, 58, 58, 0.5);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .game-card:hover .game-image {
+            transform: scale(1.03);
+        }
+        
+        .game-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .game-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--red);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .game-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eee;
+        }
+        
+        .game-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            color: white;
+            background: rgba(255, 58, 58, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .anime-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+        
+        .anime-card {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 58, 58, 0.2);
+        }
+        
+        .anime-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 58, 58, 0.2);
+            border-color: rgba(255, 58, 58, 0.5);
+        }
+        
+        .anime-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .anime-card:hover .anime-image {
+            transform: scale(1.03);
+        }
+        
+        .anime-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .anime-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--red);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .anime-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eee;
+        }
+        
+        .light-effect {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, 
+                        rgba(255,58,58,0.3) 0%, 
+                        rgba(255,58,58,0) 70%);
+            border-radius: 50%;
+            filter: blur(15px);
+            animation: lightMove 10s infinite alternate;
+            bottom: 15%;
+            right: -30px;
+        }
+        
+        @keyframes lightMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -15px) scale(1.1); }
+        }
+        
+        .first-video-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .first-video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 3px solid var(--red);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .first-video-date {
+            color: var(--red);
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .first-video-description {
+            margin: 25px 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-color);
+        }
+        
+        /* جدول البث المعدل */
+        .schedule-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .schedule-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: separate;
+            border-spacing: 8px;
+            margin: 30px auto 0;
+            background-color: transparent;
+        }
+        
+        .schedule-table th, 
+        .schedule-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 2px solid var(--red);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .schedule-table th {
+            background-color: var(--red);
+            color: var(--dark-text);
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 2px solid var(--red);
+        }
+        
+        .schedule-table tr:hover td {
+            background-color: rgba(255, 0, 0, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .schedule-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--text-color);
+        }
+        
+        /* وسائل التواصل المعدلة */
+        .social-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .social-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover img {
+            transform: scale(1.1);
+        }
+        
+        .youtube-link:hover {
+            border-color: #FF0000;
+        }
+        
+        .tiktok-link:hover {
+            border-color: #ff0000;
+        }
+        
+        .kick-link:hover {
+            border-color: #ff0000;
+        }
+        
+        .twitter-link:hover {
+            border-color: #ff0000;
+        }
+        
+        .redz-link:hover {
+            border-color: #ff0015;
+        }
+        
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            background-color: var(--nav-bg);
+            border-top: 3px solid var(--red);
+        }
+        
+        footer p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: var(--text-color);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* زر تغيير اللغة */
+        .language-switcher {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .language-btn {
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            transform: scale(1.1);
+            background: #e60000;
+        }
+        
+        .language-options {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: var(--nav-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 150px;
+        }
+        
+        .language-options.show {
+            display: flex;
+        }
+        
+        .language-option {
+            padding: 8px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--red);
+            border-radius: 5px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-option:hover {
+            background: var(--red);
+            color: white;
+        }
+        
+        /* زر تغيير الوضع */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-btn {
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .theme-btn:hover {
+            transform: scale(1.1);
+            background: #e60000;
+        }
+        
+        .bg-options {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: var(--nav-bg);
+            border: 2px solid var(--red);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 150px;
+        }
+        
+        .bg-options.show {
+            display: flex;
+        }
+        
+        .bg-option {
+            padding: 8px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--red);
+            border-radius: 5px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .bg-option:hover {
+            background: var(--red);
+            color: white;
+        }
+        
+        @media (max-width: 992px) {
+            .games-grid,
+            .anime-grid,
+            .goals-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+            
+            .about-section,
+            .games-section,
+            .anime-section,
+            .first-video-section,
+            .schedule-section,
+            .social-section,
+            .goals-section {
+                padding: 60px 0;
+            }
+            
+            .social-link {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .schedule-table {
+                border-spacing: 5px;
+            }
+            
+            .schedule-table th, 
+            .schedule-table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .hero {
+                min-height: calc(100vh - 70px);
+                padding: 40px 15px;
+            }
+            
+            .social-link {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .theme-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            /* تعديلات الجدول للشاشات الصغيرة */
+            .schedule-table {
+                display: block;
+                min-width: auto;
+            }
+            
+            .schedule-table thead {
+                display: none;
+            }
+            
+            .schedule-table tbody, 
+            .schedule-table tr, 
+            .schedule-table td {
+                display: block;
+                width: 100%;
+            }
+            
+            .schedule-table tr {
+                margin-bottom: 15px;
+                border: 2px solid var(--red);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            
+            .schedule-table td {
+                text-align: right;
+                padding: 8px 15px 8px 100px;
+                position: relative;
+                border: none;
+                border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+            }
+            
+            .schedule-table td:last-child {
+                border-bottom: none;
+            }
+            
+            .schedule-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: bold;
+                color: var(--red);
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="header-container">
+            <div class="logo">Abdou<span>2Play</span></div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home" data-translate="nav.home">الرئيسية</a></li>
+                    <li><a href="#about" data-translate="nav.about">نبذة عني</a></li>
+                    <li><a href="#goals" data-translate="nav.goals">أهدافي</a></li>
+                    <li><a href="#games" data-translate="nav.games">ألعابي</a></li>
+                    <li><a href="#anime" data-translate="nav.anime">أنمياتي</a></li>
+                    <li><a href="#first-video" data-translate="nav.first_video">أول فيديو</a></li>
+                    <li><a href="#schedule" data-translate="nav.schedule">جدول البث</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="#home" data-translate="nav.home">الرئيسية</a></li>
+                    <li><a href="#about" data-translate="nav.about">نبذة عني</a></li>
+                    <li><a href="#goals" data-translate="nav.goals">أهدافي</a></li>
+                    <li><a href="#games" data-translate="nav.games">ألعابي</a></li>
+                    <li><a href="#anime" data-translate="nav.anime">أنمياتي</a></li>
+                    <li><a href="#first-video" data-translate="nav.first_video">أول فيديو</a></li>
+                    <li><a href="#schedule" data-translate="nav.schedule">جدول البث</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="videoplayback.webm" type="video/mp4">
+            <!-- يمكنك إضافة مصادر أخرى للفيديو هنا -->
+        </video>
+        <div class="container hero-content">
+            <h1 class="fade-in" data-translate="hero.title">مرحباً بكم في Abdou2Play</h1>
+            <p class="fade-in delay-1" data-translate="hero.subtitle">صانع محتوى ألعاب</p>
+            <div>
+                <a href="#about" class="btn fade-in delay-2" data-translate="hero.about_btn">تعرف عليّ</a>
+                <a href="#goals" class="btn fade-in delay-3" data-translate="hero.goals_btn">أهدافي</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2 class="centered-heading" data-translate="about.title">تعرف عليّ أكثر!</h2>
+                    <p data-translate="about.paragraph1">
+                     مرحباً، أنا عبدالرحمن، صانع محتوى ألعاب متخصص في الألعاب
+                    </p>
+                    <p data-translate="about.paragraph2">
+                        حلمي أن أشارك في رياضات الإلكترونية وأصبح أفضل لاعب. أشارك معكم شغفي بالألعاب الإلكترونية من خلال نصائح للاعبين. بدأت رحلتي في صناعة المحتوى في 15 يناير 2024 وأعمل على تطوير مهاراتي يومياً.
+                    </p>
+                    <p data-translate="about.paragraph3">
+                        خارج عالم الألعاب، أنا عاشق للأنمي وخاصةً جوجوتسو كايسن ومحقق كونان.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="goals-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="goals.title">🎯 أهدافي</h2>
+            <div class="goals-container">
+                <div class="goal-card fade-in">
+                    <div class="goal-number"></div>
+                    <div class="goal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-translate="goals.goal1_title">الوصول إلى 10,000 متابع</h3>
+                    <p data-translate="goals.goal1_desc">هدفي الأول هو بناء مجتمع قوي من محبي الألعاب يتابعون محتوانا ويستفيدون منه، وسأعمل جاهداً لتقديم محتوى مميز يستحق المتابعة.</p>
+                </div>
+                
+                <div class="goal-card fade-in delay-1">
+                    <div class="goal-number"></div>
+                    <div class="goal-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 data-translate="goals.goal2_title">دخول عالم الرياضات الإلكترونية</h3>
+                    <p data-translate="goals.goal2_desc">أطمح للمشاركة في البطولات العالمية، وسأتدرب بجد لتحقيق هذا الحلم.</p>
+                </div>
+                
+                <div class="goal-card fade-in delay-2">
+                    <div class="goal-number"></div>
+                    <div class="goal-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 data-translate="goals.goal3_title">أن أصبح أفضل لاعب</h3>
+                    <p data-translate="goals.goal3_desc">هدفي النهائي هو تطوير مهاراتي لدرجة التميز والإبداع في الألعاب التي ألعبها، وأن أصبح مرجعاً للاعبين الآخرين.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="games.title">🎮 ألعابي المفضلة</h2>
+            
+            <div class="games-grid">
+                <div class="game-card fade-in">
+                    <div class="game-icon">
+                        <i class="fab fa-empire"></i>
+                    </div>
+                    <div class="light-effect"></div>
+                    <img src="games/league.jpg" alt="League of Legends" class="game-image" data-translate="alt.league_of_legends">
+                    <div class="game-info">
+                        <h3 class="game-title" data-translate="games.game1.title">League of Legends</h3>
+                        <p class="game-description" data-translate="games.game1.description">لعبة MOBA تنافسية، تتميز بتعدد الشخصيات والاستراتيجيات العميقة</p>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in delay-1">
+                    <div class="game-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="light-effect" style="animation-delay: 2s;"></div>
+                    <img src="games/mobile.jpg" alt="Mobile Legends" class="game-image" data-translate="alt.mobile_legends">
+                    <div class="game-info">
+                        <h3 class="game-title" data-translate="games.game2.title">Mobile Legends</h3>
+                        <p class="game-description" data-translate="games.game2.description">لعبة MOBA مصممة للهواتف، سهلة التعلم ولكنها تتطلب إتقانًا عاليًا</p>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in delay-2">
+                    <div class="game-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="light-effect" style="animation-delay: 1s;"></div>
+                    <img src="games/tekken.jpg" alt="Tekken" class="game-image" data-translate="alt.tekken">
+                    <div class="game-info">
+                        <h3 class="game-title" data-translate="games.game3.title">Tekken</h3>
+                        <p class="game-description" data-translate="games.game3.description">سلسلة قتال شهيرة تتميز بحركات متنوعة وشخصيات مميزة</p>
+                    </div>
+                </div>
+                
+                <div class="game-card fade-in delay-3">
+                    <div class="game-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <div class="light-effect" style="animation-delay: 3s;"></div>
+                    <img src="games/blood_strike.jpg" alt="Blood Strike" class="game-image" data-translate="alt.blood_strike">
+                    <div class="game-info">
+                        <h3 class="game-title" data-translate="games.game4.title">Blood Strike</h3>
+                        <p class="game-description" data-translate="games.game4.description">لعبة تصويب تكتيكية تتميز بجرافيك عالي وإثارة مكثفة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="anime" class="anime-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="anime.title">🎌 أنمياتي المفضلة</h2>
+            
+            <div class="anime-grid">
+                <div class="anime-card fade-in">
+                    <div class="light-effect"></div>
+                    <img src="anime/jujutsu.png" alt="جوجوتسو كايسن" class="anime-image" data-translate="alt.jujutsu_kaisen">
+                    <div class="anime-info">
+                        <h3 class="anime-title" data-translate="anime.anime1.title">جوجوتسو كايسن</h3>
+                        <p class="anime-description" data-translate="anime.anime1.description">الأنمي المفضل لدي بلا منازع، قصة رائعة وشخصيات لا تنسى</p>
+                    </div>
+                </div>
+                
+                <div class="anime-card fade-in delay-1">
+                    <div class="light-effect" style="animation-delay: 2s;"></div>
+                    <img src="anime/conan.png" alt="محقق كونان" class="anime-image" data-translate="alt.detective_conan">
+                    <div class="anime-info">
+                        <h3 class="anime-title" data-translate="anime.anime2.title">محقق كونان</h3>
+                        <p class="anime-description" data-translate="anime.anime2.description">كلاسيكي رائع تابعته لسنوات، قصص بوليسية مشوقة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="first-video" class="first-video-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="first_video.title">🎬 أول فيديو على يوتيوب</h2>
+            <div class="first-video-container fade-in">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/hkhshDRUcUg" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+                <div class="first-video-date">
+                    <i class="fas fa-calendar-alt"></i> <span data-translate="first_video.date">15 يناير 2024 - بداية الرحلة</span>
+                </div>
+                <div class="first-video-description">
+                    <p data-translate="first_video.description">هذا أول فيديو قمت بنشره على قناتي في يوتيوب، حيث بدأت رحلتي في صناعة المحتوى. كان فيديو بسيط لكنه يمثل نقطة البداية لشغفي بمشاركة تجاربي في الألعاب مع الجمهور.</p>
+                </div>
+                <a href="https://youtu.be/hkhshDRUcUg?si=_cqvbwy-aVa7VYbu" class="btn" target="_blank">
+                    <i class="fab fa-youtube"></i> <span data-translate="first_video.watch_btn">مشاهدة الفيديو على يوتيوب</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="schedule-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="schedule.title">⏰ جدول البث المباشر</h2>
+            <div class="schedule-container">
+                <table class="schedule-table fade-in">
+                    <thead>
+                        <tr>
+                            <th data-translate="schedule.day">اليوم</th>
+                            <th data-translate="schedule.time">الوقت</th>
+                            <th data-translate="schedule.game">اللعبة</th>
+                            <th data-translate="schedule.type">النوع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="schedule.day" data-translate="schedule.friday">الجمعة</td>
+                            <td data-label="schedule.time" data-translate="schedule.time1">10:00 مساءً - 2:00 صباحاً</td>
+                            <td data-label="schedule.game" data-translate="schedule.various_games">ألعاب متنوعة</td>
+                            <td data-label="schedule.type" data-translate="schedule.random">عشوائية</td>
+                        </tr>
+                        <tr>
+                            <td data-label="schedule.day" data-translate="schedule.saturday">السبت</td>
+                            <td data-label="schedule.time" data-translate="schedule.time1">10:00 مساءً - 2:00 صباحاً</td>
+                            <td data-label="schedule.game" data-translate="schedule.lol_ml">League of Legends أو Mobile Legends</td>
+                            <td data-label="schedule.type" data-translate="schedule.ranked">رانكد/جند</td>
+                        </tr>
+                        <tr>
+                            <td data-label="schedule.day" data-translate="schedule.sunday_thursday">الأحد - الخميس</td>
+                            <td data-label="schedule.time" data-translate="schedule.time2">9:00 مساءً - 12:00 منتصف الليل</td>
+                            <td data-label="schedule.game" data-translate="schedule.various_games">ألعاب متنوعة</td>
+                            <td data-label="schedule.type" data-translate="schedule.random">عشوائية</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="schedule-note fade-in delay-1">
+                <p data-translate="schedule.note">ملاحظة: قد يتغير الجدول حسب الظروف، تابع صفحتي على تويتر لأي تحديثات</p>
+                <a href="https://x.com/abdou2Play" class="btn" target="_blank" data-translate="schedule.follow_btn">تابعني على تويتر</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="social" class="social-section">
+        <div class="container">
+            <h2 class="centered-heading fade-in" data-translate="social.title">📱 وسائل التواصل</h2>
+            <div class="social-links">
+                <a href="https://youtube.com/abdou2play" class="social-link youtube-link" target="_blank">
+                    <img src="site_background/Untitled.jpg" alt="YouTube" data-translate="alt.youtube">
+                    <span class="social-name">YouTube</span>
+                </a>
+                
+                <a href="https://tiktok.com/@abdou2play" class="social-link tiktok-link" target="_blank">
+                    <img src="site_background/Untitled(1).jpg" alt="TikTok" data-translate="alt.tiktok">
+                    <span class="social-name">TikTok</span>
+                </a>
+                
+                <a href="https://kick.com/abdou2play" class="social-link kick-link" target="_blank">
+                    <img src="site_background/Untitled(2).jpg" alt="Kick" data-translate="alt.kick">
+                    <span class="social-name">Kick</span>
+                </a>
+                
+                <a href="https://twitter.com/abdou2play" class="social-link twitter-link" target="_blank">
+                    <img src="site_background/Untitled3.jpg" alt="Twitter" data-translate="alt.twitter">
+                    <span class="social-name">Twitter</span>
+                </a>
+                
+                <a href="https://redzapp.app.link/17f6f01b-029c-4960-b4b8-f0913cfaa0a6" class="social-link redz-link" target="_blank">
+                    <img src="site_background/Untitled4.jpg" alt="Redz" data-translate="alt.redz">
+                    <span class="social-name">Redz</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year">2024</span> Abdou2Play. <span data-translate="footer.rights">جميع الحقوق محفوظة</span></p>
+        </div>
+    </footer>
+
+    <div class="language-switcher">
+        <button class="language-btn" id="languageBtn">
+            <i class="fas fa-globe"></i>
+        </button>
+        <div class="language-options" id="languageOptions">
+            <div class="language-option" data-lang="ar">
+                <span>🇸🇦</span> العربية
+            </div>
+            <div class="language-option" data-lang="en">
+                <span>🇬🇧</span> English
+            </div>
+            <div class="language-option" data-lang="ru">
+                <span>🇷🇺</span> Русский
+            </div>
+            <div class="language-option" data-lang="ja">
+                <span>🇯🇵</span> 日本語
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-toggle">
+        <button class="theme-btn" id="themeBtn">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="bg-options" id="bgOptions">
+            <div class="bg-option" data-theme="dark"><i class="fas fa-moon"></i> <span data-translate="theme.dark">الوضع الداكن</span></div>
+            <div class="bg-option" data-theme="light"><i class="fas fa-sun"></i> <span data-translate="theme.light">الوضع الفاتح</span></div>
+            <div class="bg-option" data-theme="blue"><i class="fas fa-droplet"></i> <span data-translate="theme.blue">الوضع الأزرق</span></div>
+        </div>
+    </div>
+
+    <script>
+        // ملفات الترجمة الكاملة
+        const translations = {
+            ar: {
+                nav: {
+                    home: "الرئيسية",
+                    about: "نبذة عني",
+                    goals: "أهدافي",
+                    games: "ألعابي",
+                    anime: "أنمياتي",
+                    first_video: "أول فيديو",
+                    schedule: "جدول البث"
+                },
+                hero: {
+                    title: "مرحباً بكم في Abdou2Play",
+                    subtitle: "صانع محتوى ألعاب",
+                    about_btn: "تعرف عليّ",
+                    goals_btn: "أهدافي"
+                },
+                about: {
+                    title: "تعرف عليّ أكثر!",
+                    paragraph1: "مرحباً، أنا عبدالرحمن، صانع محتوى ألعاب متخصص في الألعاب",
+                    paragraph2: "حلمي أن أشارك في رياضات الإلكترونية وأصبح أفضل لاعب. أشارك معكم شغفي بالألعاب الإلكترونية من خلال نصائح للاعبين. بدأت رحلتي في صناعة المحتوى في 15 يناير 2024 وأعمل على تطوير مهاراتي يومياً.",
+                    paragraph3: "خارج عالم الألعاب، أنا عاشق للأنمي وخاصةً جوجوتسو كايسن ومحقق كونان."
+                },
+                goals: {
+                    title: "🎯 أهدافي",
+                    goal1_title: "الوصول إلى 10,000 متابع",
+                    goal1_desc: "هدفي الأول هو بناء مجتمع قوي من محبي الألعاب يتابعون محتوانا ويستفيدون منه، وسأعمل جاهداً لتقديم محتوى مميز يستحق المتابعة.",
+                    goal2_title: "دخول عالم الرياضات الإلكترونية",
+                    goal2_desc: "أطمح للمشاركة في البطولات العالمية، وسأتدرب بجد لتحقيق هذا الحلم.",
+                    goal3_title: "أن أصبح أفضل لاعب",
+                    goal3_desc: "هدفي النهائي هو تطوير مهاراتي لدرجة التميز والإبداع في الألعاب التي ألعبها، وأن أصبح مرجعاً للاعبين الآخرين."
+                },
+                games: {
+                    title: "🎮 ألعابي المفضلة",
+                    game1: {
+                        title: "League of Legends",
+                        description: "لعبة MOBA تنافسية، تتميز بتعدد الشخصيات والاستراتيجيات العميقة"
+                    },
+                    game2: {
+                        title: "Mobile Legends",
+                        description: "لعبة MOBA مصممة للهواتف، سهلة التعلم ولكنها تتطلب إتقانًا عاليًا"
+                    },
+                    game3: {
+                        title: "Tekken",
+                        description: "سلسلة قتال شهيرة تتميز بحركات متنوعة وشخصيات مميزة"
+                    },
+                    game4: {
+                        title: "Blood Strike",
+                        description: "لعبة تصويب تكتيكية تتميز بجرافيك عالي وإثارة مكثفة"
+                    }
+                },
+                anime: {
+                    title: "🎌 أنمياتي المفضلة",
+                    anime1: {
+                        title: "جوجوتسو كايسن",
+                        description: "الأنمي المفضل لدي بلا منازع، قصة رائعة وشخصيات لا تنسى"
+                    },
+                    anime2: {
+                        title: "محقق كونان",
+                        description: "كلاسيكي رائع تابعته لسنوات، قصص بوليسية مشوقة"
+                    }
+                },
+                first_video: {
+                    title: "🎬 أول فيديو على يوتيوب",
+                    date: "15 يناير 2024 - بداية الرحلة",
+                    description: "هذا أول فيديو قمت بنشره على قناتي في يوتيوب، حيث بدأت رحلتي في صناعة المحتوى. كان فيديو بسيط لكنه يمثل نقطة البداية لشغفي بمشاركة تجاربي في الألعاب مع الجمهور.",
+                    watch_btn: "مشاهدة الفيديو على يوتيوب"
+                },
+                schedule: {
+                    title: "⏰ جدول البث المباشر",
+                    day: "اليوم",
+                    time: "الوقت",
+                    game: "اللعبة",
+                    type: "النوع",
+                    friday: "الجمعة",
+                    saturday: "السبت",
+                    sunday_thursday: "الأحد - الخميس",
+                    time1: "10:00 مساءً - 2:00 صباحاً",
+                    time2: "9:00 مساءً - 12:00 منتصف الليل",
+                    various_games: "ألعاب متنوعة",
+                    lol_ml: "League of Legends أو Mobile Legends",
+                    ranked: "رانكد/جند",
+                    random: "عشوائية",
+                    note: "ملاحظة: قد يتغير الجدول حسب الظروف، تابع صفحتي على تويتر لأي تحديثات",
+                    follow_btn: "تابعني على تويتر"
+                },
+                social: {
+                    title: "📱 وسائل التواصل"
+                },
+                footer: {
+                    rights: "جميع الحقوق محفوظة"
+                },
+                theme: {
+                    dark: "الوضع الداكن",
+                    light: "الوضع الفاتح",
+                    blue: "الوضع الأزرق"
+                },
+                alt: {
+                    league_of_legends: "لعبة League of Legends",
+                    mobile_legends: "لعبة Mobile Legends",
+                    tekken: "لعبة Tekken",
+                    blood_strike: "لعبة Blood Strike",
+                    jujutsu_kaisen: "أنمي جوجوتسو كايسن",
+                    detective_conan: "أنمي محقق كونان",
+                    youtube: "يوتيوب",
+                    tiktok: "تيك توك",
+                    kick: "كيك",
+                    twitter: "تويتر",
+                    redz: "ريدز"
+                }
+            },
+            en: {
+                nav: {
+                    home: "Home",
+                    about: "About Me",
+                    goals: "My Goals",
+                    games: "My Games",
+                    anime: "My Anime",
+                    first_video: "First Video",
+                    schedule: "Stream Schedule"
+                },
+                hero: {
+                    title: "Welcome to Abdou2Play",
+                    subtitle: "Gaming Content Creator",
+                    about_btn: "About Me",
+                    goals_btn: "My Goals"
+                },
+                about: {
+                    title: "Get to Know Me Better!",
+                    paragraph1: "Hello, I'm Abdulrahman, a gaming content creator specializing in competitive games.",
+                    paragraph2: "My dream is to participate in esports and become the best player. I share my passion for electronic games through tips for players. I started my content creation journey on January 15, 2024, and I work daily to improve my skills.",
+                    paragraph3: "Outside the gaming world, I'm an anime lover, especially Jujutsu Kaisen and Detective Conan."
+                },
+                goals: {
+                    title: "🎯 My Goals",
+                    goal1_title: "Reach 10,000 Followers",
+                    goal1_desc: "My first goal is to build a strong community of gaming enthusiasts who follow and benefit from our content, and I will work hard to provide distinctive content worth following.",
+                    goal2_title: "Enter the World of Esports",
+                    goal2_desc: "I aspire to participate in global tournaments, and I will train hard to achieve this dream.",
+                    goal3_title: "Become the Best Player",
+                    goal3_desc: "My ultimate goal is to develop my skills to a level of excellence and creativity in the games I play and to become a reference for other players."
+                },
+                games: {
+                    title: "🎮 My Favorite Games",
+                    game1: {
+                        title: "League of Legends",
+                        description: "Competitive MOBA game featuring diverse characters and deep strategies"
+                    },
+                    game2: {
+                        title: "Mobile Legends",
+                        description: "MOBA game designed for mobile, easy to learn but hard to master"
+                    },
+                    game3: {
+                        title: "Tekken",
+                        description: "Popular fighting series known for diverse moves and unique characters"
+                    },
+                    game4: {
+                        title: "Blood Strike",
+                        description: "Tactical shooter game with high-quality graphics and intense action"
+                    }
+                },
+                anime: {
+                    title: "🎌 My Favorite Anime",
+                    anime1: {
+                        title: "Jujutsu Kaisen",
+                        description: "My absolute favorite anime, with an amazing story and unforgettable characters"
+                    },
+                    anime2: {
+                        title: "Detective Conan",
+                        description: "A wonderful classic I've followed for years, with exciting detective stories"
+                    }
+                },
+                first_video: {
+                    title: "🎬 First YouTube Video",
+                    date: "January 15, 2024 - Beginning of the Journey",
+                    description: "This is the first video I published on my YouTube channel, where I started my content creation journey. It was a simple video but it represents the starting point of my passion for sharing my gaming experiences with the audience.",
+                    watch_btn: "Watch on YouTube"
+                },
+                schedule: {
+                    title: "⏰ Live Stream Schedule",
+                    day: "Day",
+                    time: "Time",
+                    game: "Game",
+                    type: "Type",
+                    friday: "Friday",
+                    saturday: "Saturday",
+                    sunday_thursday: "Sunday - Thursday",
+                    time1: "10:00 PM - 2:00 AM",
+                    time2: "9:00 PM - 12:00 AM",
+                    various_games: "Various Games",
+                    lol_ml: "League of Legends or Mobile Legends",
+                    ranked: "Ranked",
+                    random: "Random",
+                    note: "Note: Schedule may change depending on circumstances, follow my Twitter page for updates",
+                    follow_btn: "Follow me on Twitter"
+                },
+                social: {
+                    title: "📱 Social Media"
+                },
+                footer: {
+                    rights: "All Rights Reserved"
+                },
+                theme: {
+                    dark: "Dark Mode",
+                    light: "Light Mode",
+                    blue: "Blue Mode"
+                },
+                alt: {
+                    league_of_legends: "League of Legends game",
+                    mobile_legends: "Mobile Legends game",
+                    tekken: "Tekken game",
+                    blood_strike: "Blood Strike game",
+                    jujutsu_kaisen: "Jujutsu Kaisen anime",
+                    detective_conan: "Detective Conan anime",
+                    youtube: "YouTube",
+                    tiktok: "TikTok",
+                    kick: "Kick",
+                    twitter: "Twitter",
+                    redz: "Redz"
+                }
+            },
+            ru: {
+                nav: {
+                    home: "Главная",
+                    about: "Обо мне",
+                    goals: "Мои цели",
+                    games: "Мои игры",
+                    anime: "Мои аниме",
+                    first_video: "Первое видео",
+                    schedule: "Расписание стримов"
+                },
+                hero: {
+                    title: "Добро пожаловать в Abdou2Play",
+                    subtitle: "Создатель игрового контента",
+                    about_btn: "Обо мне",
+                    goals_btn: "Мои цели"
+                },
+                about: {
+                    title: "Узнай меня лучше!",
+                    paragraph1: "Привет, я Абдурахман, создатель игрового контента, специализирующийся на соревновательных играх.",
+                    paragraph2: "Моя мечта - участвовать в киберспорте и стать лучшим игроком. Я делюсь своей страстью к видеоиграм через советы для игроков. Я начал свое путешествие по созданию контента 15 января 2024 года и ежедневно работаю над улучшением своих навыков.",
+                    paragraph3: "Вне игрового мира я люблю аниме, особенно Jujutsu Kaisen и Detective Conan."
+                },
+                goals: {
+                    title: "🎯 Мои цели",
+                    goal1_title: "Достичь 10 000 подписчиков",
+                    goal1_desc: "Моя первая цель - создать сильное сообщество любителей игр, которые следят за нашим контентом и извлекают из него пользу, и я приложу все усилия, чтобы предоставить достойный контент.",
+                    goal2_title: "Войти в мир киберспорта",
+                    goal2_desc: "Я стремлюсь участвовать в мировых турнирах и буду усердно тренироваться, чтобы осуществить эту мечту.",
+                    goal3_title: "Стать лучшим игроком",
+                    goal3_desc: "Моя конечная цель - развить свои навыки до уровня совершенства и креативности в играх, в которые я играю, и стать ориентиром для других игроков."
+                },
+                games: {
+                    title: "🎮 Мои любимые игры",
+                    game1: {
+                        title: "League of Legends",
+                        description: "Компьютерная игра в жанре MOBA с разнообразными персонажами и глубокой стратегией"
+                    },
+                    game2: {
+                        title: "Mobile Legends",
+                        description: "MOBA-игра для мобильных устройств, простая в освоении, но сложная для мастерства"
+                    },
+                    game3: {
+                        title: "Tekken",
+                        description: "Популярная серия файтингов с разнообразными приёмами и уникальными персонажами"
+                    },
+                    game4: {
+                        title: "Blood Strike",
+                        description: "Тактический шутер с качественной графикой и динамичным геймплеем"
+                    }
+                },
+                anime: {
+                    title: "🎌 Мои любимые аниме",
+                    anime1: {
+                        title: "Jujutsu Kaisen",
+                        description: "Мое абсолютно любимое аниме с потрясающей историей и незабываемыми персонажами"
+                    },
+                    anime2: {
+                        title: "Detective Conan",
+                        description: "Замечательная классика, за которой я следил годами, с захватывающими детективными историями"
+                    }
+                },
+                first_video: {
+                    title: "🎬 Первое видео на YouTube",
+                    date: "15 января 2024 - Начало пути",
+                    description: "Это первое видео, которое я опубликовал на своем канале YouTube, где начал свое путешествие по созданию контента. Это было простое видео, но оно представляет собой отправную точку моей страсти к обмену игровым опытом с аудиторией.",
+                    watch_btn: "Смотреть на YouTube"
+                },
+                schedule: {
+                    title: "⏰ Расписание стримов",
+                    day: "День",
+                    time: "Время",
+                    game: "Игра",
+                    type: "Тип",
+                    friday: "Пятница",
+                    saturday: "Суббота",
+                    sunday_thursday: "Воскресенье - Четверг",
+                    time1: "22:00 - 02:00",
+                    time2: "21:00 - 00:00",
+                    various_games: "Разные игры",
+                    lol_ml: "League of Legends или Mobile Legends",
+                    ranked: "Ранговые",
+                    random: "Случайные",
+                    note: "Примечание: расписание может измениться в зависимости от обстоятельств, следите за обновлениями на моей странице в Twitter",
+                    follow_btn: "Подписаться в Twitter"
+                },
+                social: {
+                    title: "📱 Социальные сети"
+                },
+                footer: {
+                    rights: "Все права защищены"
+                },
+                theme: {
+                    dark: "Темный режим",
+                    light: "Светлый режим",
+                    blue: "Синий режим"
+                },
+                alt: {
+                    league_of_legends: "Игра League of Legends",
+                    mobile_legends: "Игра Mobile Legends",
+                    tekken: "Игра Tekken",
+                    blood_strike: "Игра Blood Strike",
+                    jujutsu_kaisen: "Аниме Jujutsu Kaisen",
+                    detective_conan: "Аниме Detective Conan",
+                    youtube: "YouTube",
+                    tiktok: "TikTok",
+                    kick: "Kick",
+                    twitter: "Twitter",
+                    redz: "Redz"
+                }
+            },
+            ja: {
+                nav: {
+                    home: "ホーム",
+                    about: "私について",
+                    goals: "目標",
+                    games: "好きなゲーム",
+                    anime: "好きなアニメ",
+                    first_video: "最初の動画",
+                    schedule: "配信スケジュール"
+                },
+                hero: {
+                    title: "Abdou2Playへようこそ",
+                    subtitle: "ゲームコンテンツクリエイター",
+                    about_btn: "私について",
+                    goals_btn: "目標"
+                },
+                about: {
+                    title: "私についてもっと知る",
+                    paragraph1: "こんにちは、私はアブドゥルラフマンです。競技ゲームを専門とするゲームコンテンツクリエイターです。",
+                    paragraph2: "私の夢はeスポーツに参加し、最高のプレイヤーになることです。2024年1月15日にコンテンツ作成の旅を始め、毎日スキルを向上させるために努力しています。",
+                    paragraph3: "ゲームの世界以外では、特に呪術廻戦と名探偵コナンが大好きなアニメファンです。"
+                },
+                goals: {
+                    title: "🎯 目標",
+                    goal1_title: "フォロワー10,000人を達成",
+                    goal1_desc: "最初の目標は、ゲーム愛好家の強いコミュニティを構築し、フォローに値する素晴らしいコンテンツを提供することです。",
+                    goal2_title: "eスポーツの世界に入る",
+                    goal2_desc: "世界大会に出場することを目指し、この夢を実現するために一生懸命トレーニングします。",
+                    goal3_title: "最高のプレイヤーになる",
+                    goal3_desc: "最終的な目標は、プレイするゲームで卓越したスキルと創造性を発揮し、他のプレイヤーの参考になることです。"
+                },
+                games: {
+                    title: "🎮 お気に入りのゲーム",
+                    game1: {
+                        title: "League of Legends",
+                        description: "多様なキャラクターと深い戦略が特徴の競技MOBAゲーム"
+                    },
+                    game2: {
+                        title: "Mobile Legends",
+                        description: "スマホ向けMOBAゲーム、習得は簡単だがマスターするのは難しい"
+                    },
+                    game3: {
+                        title: "Tekken",
+                        description: "多彩な技と個性的なキャラクターが特徴の人気格闘ゲームシリーズ"
+                    },
+                    game4: {
+                        title: "Blood Strike",
+                        description: "高品質なグラフィックと激しいアクションが特徴のタクティカルシューティングゲーム"
+                    }
+                },
+                anime: {
+                    title: "🎌 お気に入りのアニメ",
+                    anime1: {
+                        title: "呪術廻戦",
+                        description: "私の最も好きなアニメで、素晴らしいストーリーと忘れられないキャラクター"
+                    },
+                    anime2: {
+                        title: "名探偵コナン",
+                        description: "何年も見続けている素晴らしい古典で、興奮する探偵物語"
+                    }
+                },
+                first_video: {
+                    title: "🎬 YouTube初動画",
+                    date: "2024年1月15日 - 旅の始まり",
+                    description: "これは私がYouTubeチャンネルで公開した最初の動画で、コンテンツ作成の旅の始まりです。シンプルな動画ですが、ゲーム体験を視聴者と共有するという情熱の出発点を表しています。",
+                    watch_btn: "YouTubeで見る"
+                },
+                schedule: {
+                    title: "⏰ 配信スケジュール",
+                    day: "日",
+                    time: "時間",
+                    game: "ゲーム",
+                    type: "種類",
+                    friday: "金曜日",
+                    saturday: "土曜日",
+                    sunday_thursday: "日曜日 - 木曜日",
+                    time1: "22:00 - 02:00",
+                    time2: "21:00 - 00:00",
+                    various_games: "様々なゲーム",
+                    lol_ml: "League of Legends または Mobile Legends",
+                    ranked: "ランク",
+                    random: "ランダム",
+                    note: "注: スケジュールは状況により変更される場合があります。更新情報はTwitterページをご確認ください",
+                    follow_btn: "Twitterでフォロー"
+                },
+                social: {
+                    title: "📱 ソーシャルメディア"
+                },
+                footer: {
+                    rights: "全著作権所有"
+                },
+                theme: {
+                    dark: "ダークモード",
+                    light: "ライトモード",
+                    blue: "ブルーモード"
+                },
+                alt: {
+                    league_of_legends: "リーグ・オブ・レジェンドのゲーム",
+                    mobile_legends: "モバイル・レジェンドのゲーム",
+                    tekken: "鉄拳のゲーム",
+                    blood_strike: "ブラッド・ストライクのゲーム",
+                    jujutsu_kaisen: "呪術廻戦のアニメ",
+                    detective_conan: "名探偵コナンのアニメ",
+                    youtube: "YouTube",
+                    tiktok: "TikTok",
+                    kick: "Kick",
+                    twitter: "Twitter",
+                    redz: "Redz"
+                }
+            }
+        };
+
+        // تفعيل/إلغاء قائمة الجوال
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        const mobileLinks = document.querySelectorAll('.mobile-nav a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // تأثيرات التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // تحديث السنة في الفوتر
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // تغيير الوضع بين الداكن والفاتح والأزرق
+        const themeBtn = document.getElementById('themeBtn');
+        const bgOptions = document.getElementById('bgOptions');
+        const body = document.body;
+        
+        // تحقق من التفضيل المحفوظ
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.className = savedTheme + '-mode';
+        updateThemeIcon(savedTheme);
+        
+        themeBtn.addEventListener('click', function() {
+            bgOptions.classList.toggle('show');
+        });
+        
+        // تغيير الخلفية عند اختيار خيار
+        const bgOptionElements = document.querySelectorAll('.bg-option');
+        bgOptionElements.forEach(option => {
+            option.addEventListener('click', function() {
+                const theme = this.getAttribute('data-theme');
+                
+                // إزالة جميع الأوضاع أولاً
+                body.className = theme + '-mode';
+                localStorage.setItem('theme', theme);
+                updateThemeIcon(theme);
+                bgOptions.classList.remove('show');
+            });
+        });
+        
+        function updateThemeIcon(theme) {
+            let icon;
+            if (theme === 'light') {
+                icon = '<i class="fas fa-sun"></i>';
+            } else if (theme === 'blue') {
+                icon = '<i class="fas fa-droplet"></i>';
+            } else {
+                icon = '<i class="fas fa-moon"></i>';
+            }
+            themeBtn.innerHTML = icon;
+        }
+        
+        // إغلاق قائمة الخيارات عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!themeBtn.contains(e.target) && !bgOptions.contains(e.target)) {
+                bgOptions.classList.remove('show');
+            }
+        });
+
+        // تغيير اللغة
+        const languageBtn = document.getElementById('languageBtn');
+        const languageOptions = document.getElementById('languageOptions');
+        const htmlElement = document.documentElement;
+
+        // تحقق من اللغة المحفوظة
+        const savedLang = localStorage.getItem('language') || 'ar';
+        changeLanguage(savedLang);
+
+        languageBtn.addEventListener('click', function() {
+            languageOptions.classList.toggle('show');
+        });
+
+        // تغيير اللغة عند اختيار خيار
+        const languageOptionElements = document.querySelectorAll('.language-option');
+        languageOptionElements.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                languageOptions.classList.remove('show');
+            });
+        });
+
+        function changeLanguage(lang) {
+            // تغيير اتجاه الصفحة حسب اللغة
+            if (lang === 'ar') {
+                htmlElement.setAttribute('dir', 'rtl');
+                htmlElement.setAttribute('lang', 'ar');
+            } else {
+                htmlElement.setAttribute('dir', 'ltr');
+                htmlElement.setAttribute('lang', lang);
+            }
+
+            // تحديث جميع العناصر المترجمة
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const keys = element.getAttribute('data-translate').split('.');
+                let translation = translations[lang];
+                
+                for (const key of keys) {
+                    translation = translation?.[key];
+                }
+                
+                if (translation) {
+                    if (element.tagName === 'IMG') {
+                        element.setAttribute('alt', translation);
+                    } else {
+                        element.textContent = translation;
+                    }
+                }
+            });
+
+            localStorage.setItem('language', lang);
+        }
+
+        // إغلاق قائمة اللغات عند النقر خارجها
+        document.addEventListener('click', function(e) {
+            if (!languageBtn.contains(e.target) && !languageOptions.contains(e.target)) {
+                languageOptions.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
